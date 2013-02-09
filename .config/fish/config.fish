@@ -8,6 +8,7 @@ set -g -x fish_greeting ''
 
 # Some vars
 set -g -x GREP_OPTIONS '--color=auto'
+set -g -x PYTHONPATH '/Users/saul/workspace/insight/source/'
 
 # Aliases
 alias gopi "cd ~/workspace/insight/source/insight/"
@@ -18,7 +19,11 @@ function ...; cd ../..; end
 function ....; cd ../../..; end
 function cd..; cd ..; end
 function g;git $argv; end
-
+function gco;git checkout $argv; end
+function gd;git diff $argv; end
+function gc;git commit $argv; end
+function gs;git status $argv; end
+function gl;git la $argv; end
 
 # Snippet setting git branch and git dirty helper
 
