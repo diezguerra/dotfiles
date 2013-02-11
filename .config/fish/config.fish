@@ -2,6 +2,7 @@
 set -g -x VISUAL vim
 set -g -x EDITOR vim
 set -g -x PAGER less
+set -g -x PATH /usr/local/go/bin/ $PATH
 
 # Fish
 set -g -x fish_greeting ''
