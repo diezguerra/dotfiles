@@ -2,14 +2,15 @@
 set -g -x VISUAL vim
 set -g -x EDITOR vim
 set -g -x PAGER less
-set -g -x PATH /usr/local/go/bin/ $PATH
+set -g -x PATH /usr/local/go/bin/ /opt/local/bin /opt/local/sbin $PATH
 
 # Fish
 set -g -x fish_greeting ''
 
 # Some vars
 set -g -x GREP_OPTIONS '--color=auto'
-set -g -x PYTHONPATH '/Users/saul/workspace/insight/source/'
+set -g -x PYTHONPATH '/Library/Python/2.6/site-packages/:/Users/saul/workspace/insight/source/'
+set -g -x DJANGO_SETTINGS_MODULE 'insight.settings'
 
 # Aliases
 alias gopi "cd ~/workspace/insight/source/insight/"
