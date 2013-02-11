@@ -24,6 +24,7 @@ function gd;git diff $argv; end
 function gc;git commit $argv; end
 function gs;git status $argv; end
 function gl;git la $argv; end
+function issha;ssh ampush@$argv.ampushinsight.com;end
 
 # Snippet setting git branch and git dirty helper
 
