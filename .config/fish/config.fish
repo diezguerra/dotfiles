@@ -16,7 +16,7 @@ set -g -x DJANGO_SETTINGS_MODULE 'insight.settings'
 alias gopi "cd ~/workspace/insight/source/insight/"
 alias "gopi" "cd ~/workspace/insight/source/insight/"
 alias sshup 'ssh-agent ; ssh-add'
-sshup > /dev/null ^&1
+# sshup > /dev/null ^&1
 
 function ..; cd ..; end
 function ...; cd ../..; end
