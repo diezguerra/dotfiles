@@ -2,7 +2,7 @@
 set -g -x VISUAL vim
 set -g -x EDITOR vim
 set -g -x PAGER less
-set -g -x PATH /usr/local/go/bin/ /opt/local/bin /opt/local/sbin $PATH
+set -g -x PATH /usr/local/go/bin/ $PATH
 
 # Fish
 set -g -x fish_greeting ''
@@ -29,6 +29,7 @@ function gc;git commit $argv; end
 function gs;git status $argv; end
 function gl;git la $argv; end
 function issha;ssh ampush@$argv.ampushinsight.com;end
+function search;grep -nR $argv .; end
 
 # Snippet setting git branch and git dirty helper
 
