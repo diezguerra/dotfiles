@@ -3,8 +3,6 @@ filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
-Bundle 'kevinw/pyflakes'
-Bundle 'kevinw/pyflakes-vim'
 Bundle 'nvie/vim-flake8'
 Bundle 'kien/ctrlp.vim'
 Bundle 'alfredodeza/khuno.vim'
@@ -38,7 +36,7 @@ set nowrap
 set lazyredraw
 set colorcolumn=79
 set fileencodings=utf-8,ucs-bom,default,latin1
-set guifont=Monaco:h15
+set guifont=Monaco:h16
 set guitablabel=%M%t
 set termencoding=utf-8
 set ruler
