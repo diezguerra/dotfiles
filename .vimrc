@@ -13,6 +13,7 @@ Bundle 'vim-scripts/indentpython.vim--nianyang'
 Bundle 'vim-scripts/camelcasemotion'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'bronson/vim-trailing-whitespace'
+Bundle 'tpope/vim-markdown'
 
 " autocmd FileType python set commentstring=#\ %s
 let g:khuno_builtins="_,apply"

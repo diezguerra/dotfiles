@@ -9,13 +9,14 @@ set -g -x fish_greeting ''
 
 # Some vars
 set -g -x GREP_OPTIONS '--color=auto'
-set -g -x PYTHONPATH '/Library/Python/2.6/site-packages/:/Users/saul/workspace/insight/source/'
+set -g -x PYTHONPATH '/Library/Python/2.7/site-packages/:/Library/Python/2.6/site-packages/:/Users/saul/workspace/insight/source/'
 set -g -x DJANGO_SETTINGS_MODULE 'insight.settings'
 
 # Aliases
 alias gopi "cd ~/workspace/insight/source/insight/"
 alias "gopi" "cd ~/workspace/insight/source/insight/"
 alias sshup 'ssh-agent ; ssh-add'
+alias ls 'ls -alh'
 # sshup > /dev/null ^&1
 
 function ..; cd ..; end
