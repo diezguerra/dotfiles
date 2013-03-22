@@ -11,6 +11,7 @@ set -g -x fish_greeting ''
 set -g -x GREP_OPTIONS '--color=auto'
 set -g -x PYTHONPATH '/Library/Python/2.7/site-packages/:/Library/Python/2.6/site-packages/:/Users/saul/workspace/insight/source/'
 set -g -x DJANGO_SETTINGS_MODULE 'insight.settings'
+set -x -x JAVA_HOME '/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home'
 
 # Aliases
 alias gopi "cd ~/workspace/insight/source/insight/"
