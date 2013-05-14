@@ -1,0 +1,19 @@
+[user]
+	name = Elton John
+	email = elton.reshulon@hotmail.com
+
+[alias]
+        ci = commit
+        st = status
+        co = checkout
+        oneline = log --pretty=oneline
+        br = branch
+        la = log --color --pretty=format:'%ad %Cred%h%Creset - %cN -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit --date=short --reverse -n 20
+        ll = log --color --pretty=format:'%ad %Cred%h%Creset - %cN -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit --date=short --reverse -n 20
+        la2 = log --pretty=\"format:%h (%an): %s\" --reverse -n 20
+
+[core]
+	autocrlf = input
+	safecrlf = true
+[merge]
+	tool = vimdiff
