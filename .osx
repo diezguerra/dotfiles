@@ -205,5 +205,12 @@ echo "Remove Dropbox’s green checkmark icons in Finder"
 # Commented out, as this is known to cause problems when saving files in Adobe Illustrator CS5 :(
 #echo "0x08000100:0" > ~/.CFUserTextEncoding
 
+echo "Disable Expose zoom animation"
+defaults write com.apple.dock expose-animation-duration -float 0.01
+
+echo "Disable launchpad effects"
+defaults write com.apple.dock springboard-show-duration -int 0
+defaults write com.apple.dock springboard-hide-duration -int 0
+
 echo "Kill affected applications"
 for app in Safari Finder Dock Mail SystemUIServer; do killall "$app" >/dev/null 2>&1; done
