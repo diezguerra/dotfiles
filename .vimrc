@@ -14,6 +14,7 @@ Bundle 'vim-scripts/camelcasemotion'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'tpope/vim-markdown'
+Bundle 'airblade/vim-gitgutter'
 
 " autocmd FileType python set commentstring=#\ %s
 let g:khuno_builtins="_,apply"
@@ -21,7 +22,6 @@ filetype on
 filetype plugin indent on
 "let g:solarized_termcolors=256
 let mapleader=","
-colorscheme tomorrownight
 set background=dark
 set backspace=indent,eol,start
 set expandtab
@@ -84,6 +84,7 @@ set visualbell
 set noerrorbells
 set nobackup
 set noswapfile
+set shell=bash
 syntax on
 
 set statusline=%f[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
@@ -204,4 +205,4 @@ call MakeSpacelessIabbrev('ipdb', 'import ipdb; ipdb.set_trace()')
 map <F10> :set paste<CR>
 map <F9> :set nopaste<CR>
 
-set nocompatible
+colorscheme tomorrownight
