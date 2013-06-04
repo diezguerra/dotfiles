@@ -64,6 +64,8 @@ search() { grep -nR $1 . }
 gd() { git diff $* }
 gs() { git status $* }
 gl() { git la $* }
+gpl() { git pull origin $* }
+gps() { git push origin $* }
 
 alias ls="ls -alh"
 alias ..="cd .."
@@ -72,4 +74,3 @@ alias ....="cd ...."
 alias .....="cd ....."
 alias goaps="cd ~/workspace/aps"
 alias gopi="cd ~/workspace/insight/source/"
-

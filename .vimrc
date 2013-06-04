@@ -83,7 +83,9 @@ set title
 set visualbell
 set noerrorbells
 set nobackup
+set nowritebackup
 set noswapfile
+set backupdir=~/tmp
 set shell=bash
 syntax on
 
@@ -204,5 +206,9 @@ call MakeSpacelessIabbrev('ipdb', 'import ipdb; ipdb.set_trace()')
 
 map <F10> :set paste<CR>
 map <F9> :set nopaste<CR>
+
+" Switch to alternate file
+map <C-Tab> :bnext<cr>
+map <C-S-Tab> :bprevious<cr>
 
 colorscheme tomorrownight

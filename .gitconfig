@@ -1,6 +1,7 @@
 [user]
-	name = Elton John
-	email = elton.reshulon@hotmail.com
+	name = Saul Diez-Guerra
+#	email = saul.diezguerra@ampush.com
+	email = saul@diezguerra.com
 
 [alias]
         ci = commit
