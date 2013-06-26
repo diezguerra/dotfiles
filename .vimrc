@@ -190,6 +190,9 @@ nnoremap <silent> <leader>hh :setl hls<CR>:let @/="\\<<C-r><C-w>\\>"<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>rv :source $MYVIMRC<cr>
 
+nnoremap <C-CR> o<ESC>
+nnoremap <S-CR> O<ESC>
+
 command! -bar Invert :let &background = (&background == "light" ? "dark" : "light")
 
 function! EatChar(pat)

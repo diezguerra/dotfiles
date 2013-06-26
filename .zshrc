@@ -52,7 +52,7 @@ export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/Library/Frameworks/Python.fram
 setopt APPEND_HISTORY
 
 export WORKON_HOME="$HOME/.virtualenvs"
-export PYTHONPATH="/Library/Python/2.7/site-packages/:/Library/Python/2.6/site-packages/:/Users/saul/workspace/insight/source/:/Users/saul/workspace/"
+export PYTHONPATH="/Library/Python/2.7/site-packages/:/Library/Python/2.6/site-packages/:/Users/saul/workspace/insight/source/:/Users/saul/workspace/aps/:/Users/saul/workspace/"
 
 export EDITOR="vim"
 export PAGER="less"
