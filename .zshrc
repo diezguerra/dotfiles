@@ -48,11 +48,11 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/local/go/bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/go/bin:/usr/local/mysql/bin/
+export PATH="//anaconda/bin:$PATH"
+
+export PYTHONPATH=/Users/saul/workspace/aps/:$PYTHONPATH
 
 setopt APPEND_HISTORY
-
-export WORKON_HOME="$HOME/.virtualenvs"
-export PYTHONPATH="/Library/Python/2.7/site-packages/:/Library/Python/2.6/site-packages/:/Users/saul/workspace/insight/source/:/Users/saul/workspace/aps/:/Users/saul/workspace/"
 
 export EDITOR="vim"
 export PAGER="less"
@@ -67,10 +67,12 @@ gl() { git la $* }
 gpl() { git pull origin $* }
 gps() { git push origin $* }
 
-alias ls="ls -alh"
+alias ls="ls -alhG"
 alias ..="cd .."
 alias ...="cd ..."
 alias ....="cd ...."
 alias .....="cd ....."
 alias goaps="cd ~/workspace/aps"
 alias gopi="cd ~/workspace/insight/source/"
+bindkey -v
+bindkey '^R' history-incremental-search-backward

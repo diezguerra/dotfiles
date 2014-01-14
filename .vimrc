@@ -14,13 +14,15 @@ Bundle 'vim-scripts/camelcasemotion'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
 
 " autocmd FileType python set commentstring=#\ %s
 let g:khuno_builtins="_,apply"
+let $PATH .= ':/anaconda/bin/'
+"let g:solarized_termcolors=256
 filetype on
 filetype plugin indent on
-"let g:solarized_termcolors=256
 let mapleader=","
 set background=dark
 set backspace=indent,eol,start
@@ -190,9 +192,6 @@ nnoremap <silent> <leader>hh :setl hls<CR>:let @/="\\<<C-r><C-w>\\>"<CR>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>rv :source $MYVIMRC<cr>
 
-nnoremap <C-CR> o<ESC>
-nnoremap <S-CR> O<ESC>
-
 command! -bar Invert :let &background = (&background == "light" ? "dark" : "light")
 
 function! EatChar(pat)
@@ -214,4 +213,7 @@ map <F9> :set nopaste<CR>
 map <C-Tab> :bnext<cr>
 map <C-S-Tab> :bprevious<cr>
 
-colorscheme tomorrownight
+map <CR> o<ESC>k
+map <Space> O<ESC>j
+
+colorscheme tomorrownightbright
