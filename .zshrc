@@ -43,7 +43,7 @@ AUTO_CD=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
-plugins=(osx, git, python, history-substring-search, zsh-syntax-highlighting)
+plugins=(osx, git, python, history-substring-search, zsh-syntax-highlighting z)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
