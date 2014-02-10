@@ -47,10 +47,7 @@ plugins=(osx, git, python, history-substring-search, zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/local/go/bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/go/bin:/usr/local/mysql/bin/
-export PATH="//anaconda/bin:$PATH"
-
-export PYTHONPATH=/Users/saul/workspace/aps/:$PYTHONPATH
+export PATH=/System/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH:/opt/local/bin:/opt/local/sbin:/usr/local/go/bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
 
 setopt APPEND_HISTORY
 
@@ -72,7 +69,9 @@ alias ..="cd .."
 alias ...="cd ..."
 alias ....="cd ...."
 alias .....="cd ....."
-alias goaps="cd ~/workspace/aps"
-alias gopi="cd ~/workspace/insight/source/"
-bindkey -v
+alias gittags="git fetch && git fetch --tags && git tag -l | gsort -V | tail -n 5"
+#bindkey -v
 bindkey '^R' history-incremental-search-backward
+export PGDATA=/usr/local/var/postgres
+export WORKON_HOME=~/.envs
+source /usr/local/bin/virtualenvwrapper.sh
