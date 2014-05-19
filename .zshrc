@@ -55,8 +55,7 @@ export EDITOR="vim"
 export PAGER="less"
 
 f() { find . -name "*"$1"*" ${(@)argv[2,$#]} }
-issha() { ssh ampush@$1.ampushinsight.com }
-search() { grep -nR $1 . }
+search() { ack -nR $1 . }
 
 gd() { git diff $* }
 gs() { git status $* }
@@ -70,8 +69,13 @@ alias ...="cd ..."
 alias ....="cd ...."
 alias .....="cd ....."
 alias gittags="git fetch && git fetch --tags && git tag -l | gsort -V | tail -n 5"
+alias tf="z pysplash && workon tf && source ../environment/env-vars.sh"
+
 #bindkey -v
 bindkey '^R' history-incremental-search-backward
 export PGDATA=/usr/local/var/postgres
 export WORKON_HOME=~/.envs
 source /usr/local/bin/virtualenvwrapper.sh
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
