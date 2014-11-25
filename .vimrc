@@ -1,9 +1,9 @@
 set nocompatible
 filetype off
+set shell=bash
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
-Bundle 'nvie/vim-flake8'
 Bundle 'kien/ctrlp.vim'
 Bundle 'alfredodeza/khuno.vim'
 Bundle 'tpope/vim-commentary'
@@ -16,6 +16,13 @@ Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'bling/vim-airline'
+Bundle 'Shougo/unite.vim'
+Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Bundle 'altercation/solarized', {'rtp': 'vim-colors-solarized/'}
+Bundle 'tomasr/molokai'
+Bundle 'terryma/vim-multiple-cursors'
 
 " autocmd FileType python set commentstring=#\ %s
 let g:khuno_builtins="_,apply"
@@ -24,95 +31,102 @@ let $PATH .= ':/anaconda/bin/'
 filetype on
 filetype plugin indent on
 let mapleader=","
+set autoindent
 set background=dark
 set backspace=indent,eol,start
-set expandtab
-set smarttab
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
-set autoindent
-set nosmartindent
-set copyindent
-set relativenumber
-set nowrap
-set lazyredraw
+set backupdir=~/tmp
 set colorcolumn=79
-set fileencodings=utf-8,ucs-bom,default,latin1
-set guifont=Monaco:h16
-set guitablabel=%M%t
-set termencoding=utf-8
-set ruler
-set number "line numbers on the side
+set copyindent
+set cryptmethod=blowfish
 set cursorline
-set scrolloff=5 "provide some context when scrolling
-set showcmd
-set tildeop
+set expandtab
+set fileencodings=utf-8,ucs-bom,default,latin1
+set fillchars=""  " Get rid of the silly characters in window separators
+set guifont=Inconsolata:h18
+set guitablabel=%M%t
 set hidden
+set history=1000
+set hlsearch
+set ignorecase
+set incsearch
+set laststatus=2
+set lazyredraw
 set list
 set listchars=trail:.,extends:>,precedes:<,tab:▸\ ,eol:¬
-set hlsearch
-set incsearch
-set ignorecase
+set nobackup
+set noerrorbells
+set nosmartindent
+set noswapfile
+set nowrap
+set nowritebackup
+set number "line numbers on the side
+set relativenumber
+set ruler
+set scrolloff=5 "provide some context when scrolling
+set sessionoptions=blank,buffers,curdir,slash,tabpages,unix
+set shiftwidth=4
+set showcmd
 set smartcase
-set laststatus=2
-set history=1000
+set smarttab
+set softtabstop=4
+set splitbelow
+set splitright
+set tabstop=4
+set termencoding=utf-8
+set tildeop
+set title
 set undolevels=1000
-set wildmenu
+set viminfo='128,/32,:32,<64,@32,s10,h,n$HOME/.vim/viminfo
+set visualbell
 set wildcharm=<TAB>
-set wildmode=list:longest
-set wildignore+=.git,.hg,_darcs,.svn
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest
-set wildignore+=*.swp,*.bak,*.class
-set wildignore+=*.pyc,*.pyo
-set wildignore+=*.hi
-set wildignore+=*.luac
+set wildignore+=*.DS_Store?
 set wildignore+=*.aux,*.out,*.toc
+set wildignore+=*.hi
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
+set wildignore+=*.luac
+set wildignore+=*.mo
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest
+set wildignore+=*.pyc,*.pyo
 set wildignore+=*.spl
 set wildignore+=*.sw?
-set wildignore+=*.DS_Store?
-set wildignore+=*.mo
-set wildignore+=node_modules
+set wildignore+=*.swp,*.bak,*.class
+set wildignore+=.git,.hg,_darcs,.svn
 set wildignore+=env
-set viminfo='128,/32,:32,<64,@32,s10,h,n$HOME/.vim/viminfo
-set sessionoptions=blank,buffers,curdir,slash,tabpages,unix
-set cryptmethod=blowfish
-set splitright
-set splitbelow
-set fillchars=""  " Get rid of the silly characters in window separators
-set title
-set visualbell
-set noerrorbells
-set nobackup
-set nowritebackup
-set noswapfile
-set backupdir=~/tmp
-set shell=bash
+set wildignore+=node_modules
+set wildmenu
+set wildmode=list:longest
 syntax on
 
-set statusline=%f[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
-hi StatusLine guifg=#839496 guibg=#073642
+"set statusline=%f[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+"hi StatusLine guifg=#839496 guibg=#073642
 
 set guioptions-=r "no right scrollbar
 set guioptions-=L "no left scrollbar
 set guioptions-=T "no toolbar
 
-nmap <silent> <leader>cf <ESC>/\v^[<=>]{7}( .*\|$)<CR>
-nmap <silent> <C-N> :silent noh<CR>
+nmap <silent> <leader>cf <ESC>/\v^[<=>]{7}( .*\|$)<CR> " finds git conflicts
+
 " Center screen on search match
 nnoremap n nzzzv
 nnoremap N Nzzz
-" Select just pasted text
-nnoremap <leader>v V`]
 
+" stops search hilighting
+nmap <silent> m :silent noh<cr>
+
+" select just pasted text
+nnoremap <leader>v v`]
+
+" CtrlP.vim bindings
 nnoremap <silent> <Leader>t :CtrlP<CR>
 nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 nnoremap <silent> <Leader>r :CtrlPClearAllCaches<CR>
 let g:ctrlp_working_path_mode=2
 
+" Khuno binding
 nmap <silent><Leader>k <Esc>:Khuno show<CR>
 
+
+" Mouse and GUI settings
 if has('mouse')
     set mouse=a
     set mousehide
@@ -138,6 +152,7 @@ if has("gui_running")
     set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon17
 endif
 
+" Preserves cursor position after command, good for cleanup tasks
 function! <SID>Preserve(command)
   " Preparation: save last search, and cursor position.
   let _s=@/
@@ -151,13 +166,19 @@ function! <SID>Preserve(command)
   echo "Cleaned file of whitespace and the like"
 endfunction
 
+" Cleanup whitespace
 nnoremap <silent> <F5> :call <SID>Preserve('%s/\s\+$//e')<CR>
+
+" Auto cleanup whitespace on save of python and js
 " autocmd BufWritePre *.py,*.js :call <SID>Preserve('%s/\s\+$//e')<CR>
 
+" No buffer when copying
 nnoremap c "_c
 vnoremap c "_c
 nnoremap C "_C
 vnoremap C "_C
+
+" Many ways to leave
 ino jj <esc>
 cno jj <c-c>
 inoremap jj <ESC>
@@ -189,11 +210,14 @@ cnoremap w!! w !sudo tee % >/dev/null
 " Highlight all instances of the current word under the cursor
 nnoremap <silent> <leader>hh :setl hls<CR>:let @/="\\<<C-r><C-w>\\>"<CR>
 
+" Edit and load this file
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>rv :source $MYVIMRC<cr>
 
+" Easy colorscheme inverting
 command! -bar Invert :let &background = (&background == "light" ? "dark" : "light")
 
+" Helper for MakeSpacelessIabbrev
 function! EatChar(pat)
     let c = nr2char(getchar(0))
     return (c =~ a:pat) ? '' : c
@@ -206,6 +230,8 @@ endfunction
 call MakeSpacelessIabbrev('***', '*args, **kwargs')
 call MakeSpacelessIabbrev('ipdb', 'import ipdb; ipdb.set_trace()')
 
+map <leader>n :NERDTreeToggle<CR>
+
 map <F10> :set paste<CR>
 map <F9> :set nopaste<CR>
 
@@ -216,4 +242,6 @@ map <C-S-Tab> :bprevious<cr>
 map <CR> o<ESC>k
 map <Space> O<ESC>j
 
-colorscheme tomorrownightbright
+"colorscheme Tomorrow-Night-Bright
+"colorscheme solarized
+colorscheme molokai

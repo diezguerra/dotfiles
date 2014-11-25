@@ -47,7 +47,7 @@ plugins=(osx, git, python, history-substring-search, zsh-syntax-highlighting z)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/System/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH:/opt/local/bin:/opt/local/sbin:/usr/local/go/bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
+export PATH=/usr/local/bin:$PATH:/opt/local/bin:/opt/local/sbin:/usr/local/go/bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
 
 setopt APPEND_HISTORY
 
@@ -79,3 +79,9 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# Added when node decided to be stupid and hide
+export PATH=/usr/local/Cellar/node/0.10.29/bin:$PATH
+
+autoload -U promptinit && promptinit
+prompt pure

@@ -18,3 +18,5 @@
 	safecrlf = true
 [merge]
 	tool = vimdiff
+[color]
+	ui = true
