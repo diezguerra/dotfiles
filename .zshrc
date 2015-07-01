@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="kennethreitz"
+ZSH_THEME="pure"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -60,19 +60,29 @@ search() { ack -nR $1 . }
 gd() { git diff $* }
 gs() { git status $* }
 gl() { git la $* }
-gpl() { git pull origin $* }
-gps() { git push origin $* }
 
 alias ls="ls -alhG"
 alias ..="cd .."
 alias ...="cd ..."
 alias ....="cd ...."
 alias .....="cd ....."
-alias gittags="git fetch && git fetch --tags && git tag -l | gsort -V | tail -n 5"
 alias tf="z pysplash && workon tf && source ../environment/env-vars.sh"
 
-#bindkey -v
+# Turn Vi mode on, and a right prompt marker for normal mode
+bindkey -v
+INITIAL_RPS1=$RPS1
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg[yellow]%} ◙ %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $INITIAL_RPS1"
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=1
+
+# "CtrlP"
 bindkey '^R' history-incremental-search-backward
+
 export PGDATA=/usr/local/var/postgres
 export WORKON_HOME=~/.envs
 source /usr/local/bin/virtualenvwrapper.sh
@@ -84,4 +94,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH=/usr/local/Cellar/node/0.10.29/bin:$PATH
 
 autoload -U promptinit && promptinit
-prompt pure
+
+# Poor man's dynamic motd
+uname -a
+uptime

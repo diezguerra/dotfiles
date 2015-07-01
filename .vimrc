@@ -1,28 +1,38 @@
 set nocompatible
 filetype off
 set shell=bash
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'kien/ctrlp.vim'
-Bundle 'alfredodeza/khuno.vim'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-surround'
-Bundle 'sjl/badwolf'
-Bundle 'vim-scripts/indentpython.vim--nianyang'
-Bundle 'vim-scripts/camelcasemotion'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'bronson/vim-trailing-whitespace'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'bling/vim-airline'
-Bundle 'Shougo/unite.vim'
-Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Bundle 'altercation/solarized', {'rtp': 'vim-colors-solarized/'}
-Bundle 'tomasr/molokai'
-Bundle 'terryma/vim-multiple-cursors'
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
+NeoBundle 'gmarik/vundle'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'alfredodeza/khuno.vim'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'sjl/badwolf'
+NeoBundle 'vim-scripts/indentpython.vim--nianyang'
+NeoBundle 'vim-scripts/camelcasemotion'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'bronson/vim-trailing-whitespace'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+NeoBundle 'altercation/solarized', {'rtp': 'vim-colors-solarized/'}
+NeoBundle 'tomasr/molokai'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'terryma/vim-expand-region'
+NeoBundle 'chriskempson/base16-vim'
+
+call neobundle#end()
 
 " autocmd FileType python set commentstring=#\ %s
 let g:khuno_builtins="_,apply"
@@ -30,7 +40,7 @@ let $PATH .= ':/anaconda/bin/'
 "let g:solarized_termcolors=256
 filetype on
 filetype plugin indent on
-let mapleader=","
+let mapleader="\<Space>"
 set autoindent
 set background=dark
 set backspace=indent,eol,start
@@ -60,6 +70,7 @@ set noswapfile
 set nowrap
 set nowritebackup
 set number "line numbers on the side
+set paste
 set relativenumber
 set ruler
 set scrolloff=5 "provide some context when scrolling
@@ -120,7 +131,21 @@ nnoremap <leader>v v`]
 nnoremap <silent> <Leader>t :CtrlP<CR>
 nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 nnoremap <silent> <Leader>r :CtrlPClearAllCaches<CR>
+nnoremap <silent> <Leader>o :CtrlPClearAllCaches<CR>
 let g:ctrlp_working_path_mode=2
+
+" Uses git or silver searcher to build project index
+let g:ctrlp_use_caching = 0
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+else
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+  let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+    \ }
+endif
 
 " Khuno binding
 nmap <silent><Leader>k <Esc>:Khuno show<CR>
@@ -178,6 +203,19 @@ vnoremap c "_c
 nnoremap C "_C
 vnoremap C "_C
 
+" Copy & paste to system clipboard with <leader>p and <leader>y
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+" Automatically jump to end of text you pasted
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
 " Many ways to leave
 ino jj <esc>
 cno jj <c-c>
@@ -195,6 +233,13 @@ nnoremap <left> <C-w>h
 nnoremap <right> <C-w>l
 nnoremap <up> <C-w>k
 nnoremap <down> <C-w>j
+
+" Enter visual line mode with <Space><Space>:
+nmap <Leader><Leader> V
+
+" Expanding areas
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 set noesckeys
 set timeout timeoutlen=1000 ttimeoutlen=100
@@ -230,8 +275,6 @@ endfunction
 call MakeSpacelessIabbrev('***', '*args, **kwargs')
 call MakeSpacelessIabbrev('ipdb', 'import ipdb; ipdb.set_trace()')
 
-map <leader>n :NERDTreeToggle<CR>
-
 map <F10> :set paste<CR>
 map <F9> :set nopaste<CR>
 
@@ -239,9 +282,39 @@ map <F9> :set nopaste<CR>
 map <C-Tab> :bnext<cr>
 map <C-S-Tab> :bprevious<cr>
 
-map <CR> o<ESC>k
-map <Space> O<ESC>j
+map <C-CR> o<ESC>k
+map <C-S-CR> O<ESC>j
+
+nnoremap <CR> G
+nnoremap <BS> gg
+
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
+
+" Easier write
+nnoremap <Leader>w :w<CR>
+
+" Stop that stupid window from popping up
+map q: :q
+
+let g:airline_theme='powerlineish'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_section_z=''
 
 "colorscheme Tomorrow-Night-Bright
 "colorscheme solarized
-colorscheme molokai
+"colorscheme molokai
+"colorscheme wombat256mod highlight ColorColumn ctermbg=7 highlight ColorColumn guibg=Black
+colorscheme base16-default
+
+NeoBundleCheck
+
