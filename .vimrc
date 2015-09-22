@@ -17,6 +17,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'sjl/badwolf'
 NeoBundle 'vim-scripts/indentpython.vim--nianyang'
 NeoBundle 'vim-scripts/camelcasemotion'
+NeoBundle 'vim-scripts/vim-es6'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'tpope/vim-markdown'
@@ -31,6 +32,8 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'nvie/vim-flake8'
 
 call neobundle#end()
 
@@ -52,7 +55,7 @@ set cursorline
 set expandtab
 set fileencodings=utf-8,ucs-bom,default,latin1
 set fillchars=""  " Get rid of the silly characters in window separators
-set guifont=Inconsolata:h18
+set guifont=Inconsolata:h14
 set guitablabel=%M%t
 set hidden
 set history=1000
@@ -216,14 +219,6 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
-" Many ways to leave
-ino jj <esc>
-cno jj <c-c>
-inoremap jj <ESC>
-inoremap jk <ESC>
-inoremap kj <ESC>
-vno v <esc>
-
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
@@ -256,7 +251,7 @@ cnoremap w!! w !sudo tee % >/dev/null
 nnoremap <silent> <leader>hh :setl hls<CR>:let @/="\\<<C-r><C-w>\\>"<CR>
 
 " Edit and load this file
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :tabedit $MYVIMRC<cr>
 nnoremap <leader>rv :source $MYVIMRC<cr>
 
 " Easy colorscheme inverting
@@ -305,16 +300,36 @@ nnoremap <Leader>w :w<CR>
 " Stop that stupid window from popping up
 map q: :q
 
+" Many ways to leave
+ino jj <esc>
+cno jj <c-c>
+inoremap jj <ESC>
+inoremap jk <ESC>
+inoremap kj <ESC>
+vno v <esc>
+
 let g:airline_theme='powerlineish'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z=''
 
+" Helps .editorconfig play nice with fugitive plugin
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" flake8 config
+let g:flake8_show_in_gutter=1
+let g:flake8_show_in_file=1
+let g:flake8_show_quickfix=1
+autocmd BufWritePost *.py call Flake8()
+
 "colorscheme Tomorrow-Night-Bright
-"colorscheme solarized
+colorscheme solarized
 "colorscheme molokai
-"colorscheme wombat256mod highlight ColorColumn ctermbg=7 highlight ColorColumn guibg=Black
-colorscheme base16-default
+"colorscheme wombat256mod
+"highlight ColorColumn ctermbg=7
+highlight ColorColumn guibg=Black
+"colorscheme base16-default
+" highlight ColorColumn ctermbg=7
+" highlight ColorColumn guibg=Grey
 
 NeoBundleCheck
-
