@@ -98,3 +98,4 @@ autoload -U promptinit && promptinit
 # Poor man's dynamic motd
 uname -a
 uptime
+alias vlc=/Applications/VLC.app/Contents/MacOS/VLC

@@ -55,7 +55,7 @@ set cursorline
 set expandtab
 set fileencodings=utf-8,ucs-bom,default,latin1
 set fillchars=""  " Get rid of the silly characters in window separators
-set guifont=Inconsolata:h14
+set guifont=Fira\ Mono:h14
 set guitablabel=%M%t
 set hidden
 set history=1000
@@ -323,13 +323,13 @@ let g:flake8_show_quickfix=1
 autocmd BufWritePost *.py call Flake8()
 
 "colorscheme Tomorrow-Night-Bright
-colorscheme solarized
+"colorscheme solarized
 "colorscheme molokai
-"colorscheme wombat256mod
+colorscheme wombat256mod
 "highlight ColorColumn ctermbg=7
-highlight ColorColumn guibg=Black
+"highlight ColorColumn guibg=Black
 "colorscheme base16-default
-" highlight ColorColumn ctermbg=7
+ highlight ColorColumn ctermbg=7
 " highlight ColorColumn guibg=Grey
 
 NeoBundleCheck
