@@ -34,6 +34,7 @@ NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'nvie/vim-flake8'
+NeoBundle 'elixir-lang/vim-elixir'
 
 call neobundle#end()
 
@@ -324,8 +325,8 @@ autocmd BufWritePost *.py call Flake8()
 
 "colorscheme Tomorrow-Night-Bright
 "colorscheme solarized
-"colorscheme molokai
-colorscheme wombat256mod
+colorscheme molokai
+"colorscheme wombat256mod
 "highlight ColorColumn ctermbg=7
 "highlight ColorColumn guibg=Black
 "colorscheme base16-default

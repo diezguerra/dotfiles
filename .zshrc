@@ -58,7 +58,7 @@ f() { find . -name "*"$1"*" ${(@)argv[2,$#]} }
 search() { ack -nR $1 . }
 
 gd() { git diff $* }
-gs() { git status $* }
+gs() { git st $* }
 gl() { git la $* }
 
 alias ls="ls -alhG"
@@ -98,4 +98,9 @@ autoload -U promptinit && promptinit
 # Poor man's dynamic motd
 uname -a
 uptime
+date
 alias vlc=/Applications/VLC.app/Contents/MacOS/VLC
+
+export PYTHONDONTWRITEBYTECODE=yesplease
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

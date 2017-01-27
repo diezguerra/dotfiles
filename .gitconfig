@@ -3,14 +3,23 @@
 	email = saul@diezguerra.com
 
 [alias]
-        ci = commit
-        st = status
-        co = checkout
-        oneline = log --pretty=oneline
-        br = branch
-        la = log --color --pretty=format:'%ad %Cred%h%Creset - %cN -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit --date=short --reverse -n 20
-        ll = log --color --pretty=format:'%ad %Cred%h%Creset - %cN -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit --date=short --reverse -n 20
-        la2 = log --pretty=\"format:%h (%an): %s\" --reverse -n 20
+    ci = commit
+    st = status --short --branch
+    stt = status
+    co = checkout
+    please = push --force-with-lease
+    commend = commit --amend --no-edit
+    merg = merge --no-ff
+    stsh = stash --keep-index
+    staash = stash --include-untracked
+    staaash = stash --all
+    oneline = log --pretty=oneline
+    br = branch
+    la = log --color --pretty=format:'%ad %Cred%h%Creset - %cN -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit --date=short --reverse -n 20
+    ll = log --color --pretty=format:'%ad %Cred%h%Creset - %cN -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit --date=short --reverse -n 20
+    la2 = log --pretty=\"format:%h (%an): %s\" --reverse -n 20
+    re = for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:short) %(objectname:short) (%(authorname)) %(refname:short)'
+    grog = log --graph --abbrev-commit --decorate --all --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)"
 
 [core]
 	autocrlf = input
