@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="pure"
+ZSH_THEME="refined"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -104,3 +104,11 @@ alias vlc=/Applications/VLC.app/Contents/MacOS/VLC
 export PYTHONDONTWRITEBYTECODE=yesplease
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+alias usboff="cd /System/Library/Extensions/ && sudo kextunload IOUSBMassStorageClass.kext && cd -"
+alias usbon="cd /System/Library/Extensions/ && sudo kextload IOUSBMassStorageClass.kext && cd -"
+
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+
+setopt HIST_IGNORE_SPACE
+alias jrnl=" jrnl"

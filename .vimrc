@@ -10,7 +10,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
 NeoBundle 'gmarik/vundle'
-NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'alfredodeza/khuno.vim'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-surround'
@@ -28,6 +27,7 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 NeoBundle 'altercation/solarized', {'rtp': 'vim-colors-solarized/'}
+NeoBundle 'junegunn/fzf', { 'dir': '/usr/local/opt/fzf', 'do': './install --all' }
 NeoBundle 'tomasr/molokai'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'terryma/vim-expand-region'
@@ -56,7 +56,7 @@ set cursorline
 set expandtab
 set fileencodings=utf-8,ucs-bom,default,latin1
 set fillchars=""  " Get rid of the silly characters in window separators
-set guifont=Fira\ Mono:h14
+set guifont=Fira\ Mono:h15
 set guitablabel=%M%t
 set hidden
 set history=1000
@@ -132,11 +132,12 @@ nmap <silent> m :silent noh<cr>
 nnoremap <leader>v v`]
 
 " CtrlP.vim bindings
-nnoremap <silent> <Leader>t :CtrlP<CR>
-nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
-nnoremap <silent> <Leader>r :CtrlPClearAllCaches<CR>
-nnoremap <silent> <Leader>o :CtrlPClearAllCaches<CR>
-let g:ctrlp_working_path_mode=2
+"nnoremap <silent> <Leader>t :CtrlP<CR>
+"nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
+"nnoremap <silent> <Leader>r :CtrlPClearAllCaches<CR>
+"nnoremap <silent> <Leader>o :CtrlPClearAllCaches<CR>
+"let g:ctrlp_working_path_mode=2
+
 
 " Uses git or silver searcher to build project index
 let g:ctrlp_use_caching = 0
@@ -150,6 +151,49 @@ else
     \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
     \ }
 endif
+
+
+" FZF Bindings
+
+nnoremap <silent> <Leader>t :FZF<CR>
+nnoremap <silent> <Leader>b :FZF!<CR>
+
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+
+" In Neovim, you can set up fzf window using a Vim command
+let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': '-tabnew' }
+let g:fzf_layout = { 'window': '10split enew' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
 
 " Khuno binding
 nmap <silent><Leader>k <Esc>:Khuno show<CR>
@@ -325,8 +369,8 @@ autocmd BufWritePost *.py call Flake8()
 
 "colorscheme Tomorrow-Night-Bright
 "colorscheme solarized
-colorscheme molokai
-"colorscheme wombat256mod
+"colorscheme molokai
+colorscheme wombat256mod
 "highlight ColorColumn ctermbg=7
 "highlight ColorColumn guibg=Black
 "colorscheme base16-default
