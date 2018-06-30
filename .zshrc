@@ -88,7 +88,7 @@ export WORKON_HOME=~/.envs
 source /usr/local/bin/virtualenvwrapper.sh
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+#export PATH="/usr/local/heroku/bin:$PATH"
 
 # Added when node decided to be stupid and hide
 export PATH=/usr/local/Cellar/node/0.10.29/bin:$PATH
@@ -109,6 +109,10 @@ alias usboff="cd /System/Library/Extensions/ && sudo kextunload IOUSBMassStorage
 alias usbon="cd /System/Library/Extensions/ && sudo kextload IOUSBMassStorageClass.kext && cd -"
 
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 setopt HIST_IGNORE_SPACE
 alias jrnl=" jrnl"
+
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"

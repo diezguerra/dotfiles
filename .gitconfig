@@ -24,6 +24,7 @@
 [core]
 	autocrlf = input
 	safecrlf = true
+	excludesfile = /Users/saul/.gitignore_global
 [merge]
 	tool = vimdiff
 [color]
