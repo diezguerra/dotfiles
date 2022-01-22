@@ -116,3 +116,38 @@ alias jrnl=" jrnl"
 
 #export NVM_DIR="$HOME/.nvm"
 #. "/usr/local/opt/nvm/nvm.sh"
+export PATH="/Users/saul/google-cloud-sdk/bin/:$PATH"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/saul/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/saul/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/saul/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/saul/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+
+eval "$(starship init zsh)"
+
+function echo_color() {
+      local color="$1"
+      printf "${color}$2\033[0m\n"
+    }
+echo_color "\033[0;90m" "c-f  Move forward"
+echo_color "\033[0;90m" "c-b  Move backward"
+echo_color "\033[0;90m" "c-p  Move up"
+echo_color "\033[0;90m" "c-n  Move down"
+echo_color "\033[0;90m" "c-a  Jump to beginning of line"
+echo_color "\033[0;90m" "c-e  Jump to end of line"
+echo_color "\033[0;90m" "c-d  Delete forward"
+echo_color "\033[0;90m" "c-h  Delete backward"
+echo_color "\033[0;90m" "c-k  Delete forward to end of line"
+echo_color "\033[0;90m" "c-u  Delete entire line"

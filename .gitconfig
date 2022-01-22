@@ -22,9 +22,10 @@
     grog = log --graph --abbrev-commit --decorate --all --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)"
 
 [core]
-	autocrlf = input
-	safecrlf = true
+	autocrlf = true
+	safecrlf = false
 	excludesfile = /Users/saul/.gitignore_global
+	eol = crlf
 [merge]
 	tool = vimdiff
 [color]

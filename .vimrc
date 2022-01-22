@@ -35,6 +35,7 @@ NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'nvie/vim-flake8'
+NeoBundle 'LnL7/vim-nix'
 NeoBundle 'elixir-lang/vim-elixir'
 
 call neobundle#end()
@@ -57,7 +58,7 @@ set cursorline
 set expandtab
 set fileencodings=utf-8,ucs-bom,default,latin1
 set fillchars=""  " Get rid of the silly characters in window separators
-set guifont=Fira\ Mono:h15
+set guifont=Fira\ Mono:h16
 set guitablabel=%M%t
 set hidden
 set history=1000
@@ -343,6 +344,14 @@ vmap <silent> <expr> p <sid>Repl()
 " Easier write
 nnoremap <Leader>w :w<CR>
 
+" Relative numbers
+nnoremap <Leader>n :set rnu!<CR>
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 " Stop that stupid window from popping up
 map q: :q
 
@@ -368,10 +377,10 @@ let g:flake8_show_in_file=1
 let g:flake8_show_quickfix=1
 autocmd BufWritePost *.py call Flake8()
 
-"colorscheme Tomorrow-Night-Bright
+colorscheme Tomorrow-Night-Bright
 "colorscheme solarized
 "colorscheme molokai
-colorscheme wombat256mod
+"colorscheme wombat256mod
 "highlight ColorColumn ctermbg=7
 "highlight ColorColumn guibg=Black
 "colorscheme base16-default
