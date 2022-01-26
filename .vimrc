@@ -42,7 +42,7 @@ call neobundle#end()
 
 " autocmd FileType python set commentstring=#\ %s
 let g:khuno_builtins="_,apply"
-let $PATH .= ':/anaconda/bin/'
+let $PATH = '~/.nix-profile/bin/:' . $PATH
 "let g:solarized_termcolors=256
 filetype on
 filetype plugin indent on
