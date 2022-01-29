@@ -30,3 +30,5 @@
 	tool = vimdiff
 [color]
 	ui = true
+[log]
+	date = iso

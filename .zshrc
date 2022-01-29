@@ -8,6 +8,15 @@ setopt APPEND_HISTORY
 export EDITOR="vim"
 export PAGER="less"
 
+# Nix
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+
+# Cargo binaries
+
+export PATH=/Users/saul/.cargo/bin/:$PATH
+
 f() { find . -name "*"$1"*" ${(@)argv[2,$#]} }
 search() { ack -nR $1 . }
 
